@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-declare let L;
-declare let tomtom: any;
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import tt from '@tomtom-international/web-sdk-maps';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  styleUrls: ['./map.component.css'],
+  encapsulation : ViewEncapsulation.None
 })
 export class MapComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit() {
-    const map = tomtom.L.map('map', {
-      key: 'IXJ9JJzlzyRAsBuhy8wESw33Q8b2esZ5',
-      basePath: '../../assets/sdk',
-      center: [ 52.360306, 4.876935 ],
-      zoom: 15,
-      source : 'vector'
+    const map = tt.map({
+      key:'IXJ9JJzlzyRAsBuhy8wESw33Q8b2esZ5',
+      container:'map',
+      center: [ 50.4542,3.9567 ],
+      style:'tomtom://vector/1/basic-main'
     });
+    map.addControl(new tt.NavigationControl())
   }
 
 }
